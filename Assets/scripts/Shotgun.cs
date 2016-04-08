@@ -20,7 +20,10 @@ public class Shotgun : MonoBehaviour {
         if (Input.GetKey(KeyCode.E) && currentReload >= reload && transform.parent.GetComponent<PlayerInput>().aShop == null)
         {
             GameObject go = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;
-            go.GetComponent<Bullet>().Launch(transform.right);
+            if(transform.parent.GetComponent<PlayerMovement>().GetOrientation())
+                go.GetComponent<Bullet>().Launch(transform.right);
+            else
+                go.GetComponent<Bullet>().Launch(-transform.right);
             currentReload = 0.0f;
         }
 	}

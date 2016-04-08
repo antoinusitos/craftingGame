@@ -17,7 +17,6 @@ public class Shop : MonoBehaviour {
     private GameObject player;
 
     public GameObject panel;
-    public GameObject goldText;
 
     void Start()
     {
@@ -60,7 +59,6 @@ public class Shop : MonoBehaviour {
         if(open)
         {
             panel.SetActive(true);
-            RefreshUI();
         }
         else
         {
@@ -70,17 +68,10 @@ public class Shop : MonoBehaviour {
 
     public void Execute(int i)
     {
-        Debug.Log("execute : " + i);
         if(player.GetComponent<Inventory>().GetGold() >= items[i].cost)
         {
             player.GetComponent<Inventory>().AddItem(items[i].item.GetComponent<Item>());
             player.GetComponent<Inventory>().RemoveGold(items[i].cost);
-            RefreshUI();
         }
-    }
-
-    public void RefreshUI()
-    {
-        goldText.GetComponent<Text>().text = player.GetComponent<Inventory>().GetGold().ToString();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,10 +23,13 @@ public class Inventory : MonoBehaviour {
     public inventoryItem[] items;
     private int indexItem = 0;
     private int gold = 20;
-    
+    public GameObject goldText;
+
+
     void Start ()
     {
         Init();
+        RefreshUI();
     }
 
     void Update()
@@ -129,10 +133,17 @@ public class Inventory : MonoBehaviour {
     public void AddGold(int amount)
     {
         gold += amount;
+        RefreshUI();
     }
 
     public void RemoveGold(int amount)
     {
         gold -= amount;
+        RefreshUI();
+    }
+
+    public void RefreshUI()
+    {
+        goldText.GetComponent<Text>().text = gold.ToString();
     }
 }

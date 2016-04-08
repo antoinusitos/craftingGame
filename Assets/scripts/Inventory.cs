@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour {
     public List<inventoryLoot> loots;
     public inventoryItem[] items;
     private int indexItem = 0;
+    private int gold = 20;
     
     void Start ()
     {
@@ -118,5 +119,20 @@ public class Inventory : MonoBehaviour {
             
         }
         return true;
+    }
+
+    public int GetGold()
+    {
+        return gold;
+    }
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+    }
+
+    public void RemoveGold(int amount)
+    {
+        gold -= amount;
     }
 }

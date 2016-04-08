@@ -17,7 +17,7 @@ public class Shotgun : MonoBehaviour {
 
         currentReload += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.E) && currentReload >= reload)
+        if (Input.GetKey(KeyCode.E) && currentReload >= reload && transform.parent.GetComponent<PlayerInput>().aShop == null)
         {
             GameObject go = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;
             go.GetComponent<Bullet>().Launch(transform.right);

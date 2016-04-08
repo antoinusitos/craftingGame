@@ -5,7 +5,7 @@ public class PlayerInput : MonoBehaviour {
 
     private PlayerMovement m_Character;
     private bool m_Jump;
-
+    public GameObject aShop = null;
 
     private void Awake()
     {
@@ -19,6 +19,10 @@ public class PlayerInput : MonoBehaviour {
         {
             // Read the jump input in Update so button presses aren't missed.
             m_Jump = Input.GetButtonDown("Jump");
+        }
+        if(Input.GetKeyDown(KeyCode.E) && aShop != null)
+        {
+            aShop.GetComponent<Shop>().OpenOrClose();
         }
     }
 

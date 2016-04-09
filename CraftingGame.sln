@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "craftingGame.CSharp", "craftingGame.CSharp.csproj", "{F58AFAEA-2B7D-02A8-086F-274034B40CFE}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{D384C1AA-431E-92DE-E2C2-8CB957C4BD49}") = "craftingGame", "Assembly-CSharp.csproj", "{477360B2-7BDF-0337-D2BA-A5228D4CD97C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F58AFAEA-2B7D-02A8-086F-274034B40CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F58AFAEA-2B7D-02A8-086F-274034B40CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F58AFAEA-2B7D-02A8-086F-274034B40CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F58AFAEA-2B7D-02A8-086F-274034B40CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477360B2-7BDF-0337-D2BA-A5228D4CD97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477360B2-7BDF-0337-D2BA-A5228D4CD97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477360B2-7BDF-0337-D2BA-A5228D4CD97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477360B2-7BDF-0337-D2BA-A5228D4CD97C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

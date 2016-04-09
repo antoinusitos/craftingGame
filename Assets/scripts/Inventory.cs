@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour {
     {
         public Loot theLoot;
         public int quantity;
+        public Sprite theTexture;
     }
 
     [System.Serializable]
@@ -17,6 +18,7 @@ public class Inventory : MonoBehaviour {
     {
         public int id;
         public string name;
+        public Sprite theTexture;
     }
 
     public List<inventoryLoot> loots;
@@ -24,6 +26,11 @@ public class Inventory : MonoBehaviour {
     private int indexItem = 0;
     private int gold = 20;
     public GameObject goldText;
+
+    private bool open = false;
+    public GameObject panel;
+
+    private int craftState = 1;
 
 
     void Start ()
@@ -56,16 +63,67 @@ public class Inventory : MonoBehaviour {
                 Debug.Log("quantity:" + loots[j].quantity);
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.I))
         {
-
+            open = !open;
+            panel.SetActive(open);
+            RefreshUIInventory();
         }
+    }
+
+    void RefreshUIInventory()
+    {
+        for (int i = 0; i < items.Length; ++i)
+        {
+            if (items[i].id > 0)
+            {
+                panel.transform.GetChild(i).GetComponent<Image>().sprite = items[i].theTexture;
+            }
+        }
+        RefreshState();
     }
 
     void Init()
     {
         loots = new List<inventoryLoot>();
         items = new inventoryItem[15];
+    }
+
+    void RefreshState()
+    {
+        ColorBlock white = new ColorBlock();
+        white.normalColor = new Color(255, 255, 255, 1);
+        white.colorMultiplier = 1.0f;
+
+        ColorBlock black = new ColorBlock();
+        black.normalColor = new Color(255, 255, 255, 100);
+        black.colorMultiplier = 1.0f;
+
+        if (craftState == 1)
+        {
+            panel.transform.GetChild(15).GetComponent<Button>().colors = white;
+            panel.transform.GetChild(16).GetComponent<Button>().colors = black;
+        }
+        else
+        {
+            panel.transform.GetChild(15).GetComponent<Button>().colors = black;
+            panel.transform.GetChild(16).GetComponent<Button>().colors = white;
+        }
+    }
+
+    public void CraftState(GameObject obj)
+    {
+        if(craftState == 1)
+        {
+            panel.transform.GetChild(15).GetComponent<Image>().sprite = obj.GetComponent<Image>().sprite;
+            craftState ++;
+        }
+        else
+        {
+            panel.transform.GetChild(16).GetComponent<Image>().sprite = obj.GetComponent<Image>().sprite;
+            craftState = 1;
+        }
+        RefreshState();
     }
 
 	public void AddLoot(Loot theLoot)
@@ -113,6 +171,7 @@ public class Inventory : MonoBehaviour {
         inventoryItem i = new inventoryItem();
         i.name = theItem.GetItemName();
         i.id = theItem.GetItemId();
+        i.theTexture = theItem.GetItemTexture();
         return i; 
     }
 
